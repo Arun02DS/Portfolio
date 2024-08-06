@@ -1,10 +1,13 @@
-
 // components/layout.tsx
 import React from 'react';
 import './globals.css';
 import Head from 'next/head';
 
-const RootLayout = ({ children }) => {
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en">
       <Head>
@@ -26,4 +29,3 @@ const RootLayout = ({ children }) => {
 };
 
 export default RootLayout;
-
