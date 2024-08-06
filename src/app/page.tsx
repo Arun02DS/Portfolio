@@ -1,113 +1,308 @@
+"use client";
+import { use, useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const [ messageInput, setMessageInput ] = useState('');
+
+  const [messages, setMessages] = useState([
+    {
+      role: 'assistant',
+      content: "How can i assist you with Arun's profile. Ask Questions?",
+    },
+  ]);
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+    let newMessages = [...messages, { role: 'user', content: messageInput }]
+    setMessages(newMessages);
+    setMessageInput('');
+
+    const apiMessage = await fetch(
+        '/api',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ messages: newMessages })
+  }).then(res => {
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    return res.json();
+  });
+  setMessages([...newMessages, { role: 'assistant', content: apiMessage }]);
+//   console.log('API Message:', apiMessage)
+  }
+
+  const toggleMobileMenu = () => {
+    setMenuOpen(!menuOpen);
+  }
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
+    <>
+      <header>
+        <a href="" className="logo-holder">
+            <div className="logo">A</div>
+            <div className="logo-text">Portfolio Website</div>
         </a>
+        <nav>
+            <ul id="menu" className={menuOpen ? "active" : ""}>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#skills">Skills</a>
+                </li>
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
+                <li>
+                    <a href="mailto:arunpycodecmaster@gmail.com" target="_blank" className="button">Contact me</a>
+                </li>
+            </ul>
+            <a href="#" className="mobile-toggele" onClick={toggleMobileMenu}>
+                <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h10" />
+                </svg>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+            </a>
+        </nav>
+    </header>
+    <main>
+        <section className="hero container">
+            <div className="hero-blue">
+                <div>
+                    <h1><small>Hi I'm</small>
+                        Arun Singh Negi
+                    </h1>
+                    <p>Accomplished data science professional with expertise in real-time ML and DL problem-solving.
+                        Proficient in developing scalable cloud-based code and staying updated on industry
+                        trends.<span>Skilled in Python, HTML,CSS,JS,SQL,NLP, and MLOps. Successfully completed projects in thyroid detection, text summarization, sign language detection, and more..</span></p>
+                    <div className="call-to-actions">
+                        <a href="./resources/Resume.pdf" target="_blank" className="button black">
+                            Veiw Resume
+                        </a>
+                        <a href="mailto:arunpycodecmaster@gmail.com" target="_blank" className="button white">
+                            Contact Me
+                        </a>
+                    </div>
+                    <div className="social-links">
+                        <a href="https://github.com/Arun02DS">
+                            <img src="./Images/github.png" alt="GitHub" width="48" />
+                        </a>
+                        <a href="www.linkedin.com/in/arun-negimedev">
+                            <img src="./Images/linkedin.png" alt="LinkedIn" width="48" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div className="hero-yellow">
+                <img src="./Images/Arun_pic_HD.png" alt="Arun Singh Negi" />
+            </div>
+        </section>
+        <section className="logos container">
+            <div className="marquee">
+                <div className="track">
+                    <img src="./Images/python.png" alt="Python" width="100" />
+                    <img src="./Images/pytorch.png" alt="Pytorch" width="100" />
+                    <img src="./Images/tensorflow.png" alt="Tensorflow" width="100" />
+                    <img src="./Images/pandas.png" alt="pandas" width="100" />
+                    <img src="./Images/html.png" alt="HTML" width="100" />
+                    <img src="./Images/css.png" alt="CSS" width="100" />
+                    <img src="./Images/javascript.png" alt="JS" width="100" />
+                    <img src="./Images/AWS.png" alt="AWS" width="100" />
+                    <img src="./Images/EC2.png" alt="EC2" width="100" />
+                    <img src="./Images/ECR.png" alt="ECR" width="100" />
+                    <img src="./Images/mongo.png" alt="Mongodb" width="100" />
+                    <img src="./Images/mysql.png" alt="Mysql" width="100" />
+                    <img src="./Images/github-actions.png" alt="github-actions" width="100" />
+                    <img src="./Images/Vector.png" alt="Vector" width="100" />
+                    <img src="./Images/python.png" alt="Python" width="100" />
+                    <img src="./Images/pytorch.png" alt="Pytorch" width="100" />
+                    <img src="./Images/tensorflow.png" alt="Tensorflow" width="100" />
+                    <img src="./Images/pandas.png" alt="pandas" width="100" />
+                    <img src="./Images/html.png" alt="HTML" width="100" />
+                    <img src="./Images/css.png" alt="CSS" width="100" />
+                    <img src="./Images/javascript.png" alt="JS" width="100" />
+                    <img src="./Images/AWS.png" alt="AWS" width="100" />
+                    <img src="./Images/EC2.png" alt="EC2" width="100" />
+                    <img src="./Images/ECR.png" alt="ECR" width="100" />
+                    <img src="./Images/mongo.png" alt="Mongodb" width="100" />
+                    <img src="./Images/mysql.png" alt="Mysql" width="100" />
+                    <img src="./Images/github-actions.png" alt="github-actions" width="100" />
+                    <img src="./Images/Vector.png" alt="Vector" width="100" />
+                </div>
+            </div>
+        </section>
+        <section id="skills" className="skills container">
+            <h2>
+                <small>
+                    About Me
+                </small>
+                Skills
+            </h2>
+            <div className="holder-blue">
+                <div className="left-column">
+                    <h3>Machine learning</h3>
+                    <ul>
+                        <li>Supervised learning</li>
+                        <li>Unsupervised learning</li>
+                        <li>Artificial Neural Network</li>
+                        <li>Convolutional Neural Network</li>
+                        <li>Recurrent Neural Network</li>
+                        <li>Long Short Term Memory</li>
+                        <li>Gated Recurrent Unit Networks</li>
+                        <li>Attention mechanism</li>
+                        <li>Transformers - Self Attention </li>
+                        <li>Transformers - Attention with mask </li>
+                    </ul>
+                    <h3>Generative AI</h3>
+                    <ul>
+                        <li>Chat GPT4, Ollama, Groq, Hugging face ...</li>
+                        <li>Langchain framework</li>
+                        <li>Vector Stores</li>
+                    </ul>
+                    <h3>ML Ops</h3>
+                    <ul>
+                        <li>Containerisation</li>
+                        <li>Github/Github Actions</li>
+                        <li>AWS - s3 Buket, ECR, EC2 machines</li>
+                        <li>Monitoring Tools - Apache Airflow</li>
+                    </ul>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+                </div>
+                <div className="right-column">
+                    <h3>
+                        A bit about me...
+                    </h3>
+                    <p>Hi, I'm Arun Singh Negi, a coder and developer who is consistent in learning new methods and
+                        technology in the field of machine learning and generative AI.</p>
+                    <p>I have implemented numerous machine learning projects by writing modular code, ensuring
+                        scalability. I have worked with both supervised and unsupervised learning models, Huggingface
+                        models, and Generative AI models. Each end-to-end project includes steps from data ingestion to
+                        model evaluation, followed by containerization using Docker and deployment in the cloud with a
+                        CI/CD pipeline.</p>
+                    <p>Currently, I am working on a project that generates SQL queries from simple text inputs,
+                        retrieves results from databases, and performs needed operations such as summarization or
+                        implementing ML models.</p>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+                </div>
+            </div>
+        </section>
+        <section className="work-experience container">
+            <h2>
+                <small>Recent</small>
+                Work Experience
+            </h2>
+            <div className="jobs">
+            <article>
+                    <figure>
+                        <div>
+                            <img src="./Images/Ineuron_1.jfif" alt="ineuron" />
+                            <figcaption>Ineuron</figcaption>
+                        </div>
+                    </figure>
+                    <h3>Ineuron</h3>
+                    <div>2023-2024</div>
+                    <p>I have completed end-to-end projects, from understanding problem statements to designing optimal architectures. I performed exploratory data analysis using Pandas, Matplotlib and Seaborn. </p><p>I applied various algorithms and pre-trained models to improve performance metrics.Documentation included high-level and low-level design with detailed workflows.</p>
+                </article>
+                
+                <article>
+                    <figure>
+                        <div>
+                            <img src="./Images/Teleperformance.jfif" alt="Teleperformance" />
+                            <figcaption>Teleperformance</figcaption>
+                        </div>
+                    </figure>
+                    <h3>Teleperformance</h3>
+                    <div>2022-2023</div>
+                    <p>As a Team Lead at Teleperformance, I managed a team, delivering resolution on clients queries. I resolved real-time client issues, handled high-level escalations in English and APAC regions.</p><p>My responsibilities included managing software installations through Jenkins, AD Manager, TP Console, and Azure AD. Additionally, I ensured adherence to company policies and maintained a positive, professional work environment.</p>
+                </article>
+                <article>
+                    <figure>
+                        <div>
+                            <img src="./Images/Teleperformance.jfif" alt="Teleperformance" />
+                            <figcaption>Teleperformance</figcaption>
+                        </div>
+                    </figure>
+                    <h3>Teleperformance</h3>
+                    <div>2020-2022</div>
+                    <p>As a Technical Support Specialist at Teleperformance, I resolved IT issues for customers, including real-time support for Genesys dialer with SQL queries and Active Directory problems like user creation and authentication.</p><p> I used CMD to address remote software issues and conducted diagnostics. I also documented and maintained records of customer interactions and resolutions in the service desk ticketing tool.</p>
+                </article>
+                
+            </div>
+        </section>
+        <section id="projects" className="bento container">
+            <h2>
+                <small>
+                    Previous
+                </small>
+                Completed Projects
+            </h2>
+            <div className="bentogrid">
+
+                <a href="https://github.com/Arun02DS/chatbot_medical.git" target="_blank" className="bentoitem">
+                    <img src="Images/chatbot.jfif" alt="Chatbot" width="100%" />
+                </a>
+                <a href="https://github.com/Arun02DS/Text-summarization.git" target="_blank" className="bentoitem">
+                    <img src="Images/text_summ.png" alt="Text-summ" width="100%" />
+                </a>
+                <a href="https://github.com/Arun02DS/Langchain_generator.git" target="_blank" className="bentoitem">
+                    <img src="Images/QandA.jfif" alt="Ouestion-Answer" width="100%" />
+                </a>
+                <a href="https://github.com/Arun02DS/Thyroid_detection.git" target="_blank" className="bentoitem">
+                    <img src="Images/Thyroid_detect.jfif" alt="Thyroid" width="100%" />
+                </a>
+                <a href="https://github.com/Arun02DS/Sign_lang_AWS.git" target="_blank" className="bentoitem">
+                    <img src="Images/sign_lang.jfif" alt="Sign-language" width="100%" />
+                </a>
+                <a href="https://github.com/Arun02DS/html_extractor.git" target="_blank" className="bentoitem">
+                    <img src="Images/Html_ex.jfif" alt="" width="100%" />
+                </a>
+
+
+            </div>
+        </section>
+        <section className="chatbot container">
+            <h2>
+                <small>Talk to me</small>
+                chatbot
+            </h2>
+            <div className="chatbot-blue">
+                <div className="chatinfo">
+                    <h3></h3>
+                    <p>Welcome to my interactive chatbot, trained on my resume to answer your questions about my work
+                        experience and skills..</p>
+                    <p>For a comprehensive overview, you can download my full resume as a PDF document using the link
+                        below.</p>
+                    <a href="./resources/Resume.pdf" target="_blank" className="button black">Download Resume</a>
+                </div>
+                <div className="chat-box">
+                    <div className="scroll-area">
+                        <ul id="chat-log">
+                        {messages.map((message, index) => (
+                        <li key={index} className={`${message.role}`}>
+                            <span className={`avatar`}>{message.role === 'user' ? 'You' : 'AI'}</span>
+                            <div className="message">{message.content}</div>
+                        </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <form onSubmit={submitForm} className="chat-message">
+                        <input type="text" placeholder="Hey Arun, What are your top skills?" 
+                        value={messageInput} onChange={e => setMessageInput(e.target.value)} />
+                        <button className="button black">Send</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
+    </>
   );
 }
