@@ -78,7 +78,7 @@ export default function Home() {
         <section className="hero container">
             <div className="hero-blue">
                 <div>
-                    <h1><small>Hi I'm</small>
+                    <h1><small>Hi I&apos;m</small>
                         Arun Singh Negi
                     </h1>
                     <p>Accomplished data science professional with expertise in real-time ML and DL problem-solving.
@@ -181,7 +181,7 @@ export default function Home() {
                     <h3>
                         A bit about me...
                     </h3>
-                    <p>Hi, I'm Arun Singh Negi, a coder and developer who is consistent in learning new methods and
+                    <p>Hi, I&apos;m Arun Singh Negi, a coder and developer who is consistent in learning new methods and
                         technology in the field of machine learning and generative AI.</p>
                     <p>I have implemented numerous machine learning projects by writing modular code, ensuring
                         scalability. I have worked with both supervised and unsupervised learning models, Huggingface
