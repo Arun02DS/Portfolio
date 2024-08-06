@@ -1,5 +1,5 @@
 "use client";
-import { use, useState } from "react";
+import React,{ use, useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
     },
   ]);
 
-  const submitForm = async (e) => {
+  const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     let newMessages = [...messages, { role: 'user', content: messageInput }]
     setMessages(newMessages);
