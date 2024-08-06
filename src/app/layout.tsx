@@ -1,19 +1,19 @@
-import "./globals.css";
-import Head from 'next/head'
 
-export const metadata = {
-  title: "Portfolio Website",
-  description: "Application to my portfolio",
+import React from 'react';
+import "./globals.css";
+
+const Layout = ({ children }) => {
+  return (
+    <div>
+      <header>
+        {/* Your header content */}
+      </header>
+      <main>{children}</main>
+      <footer>
+        {/* Your footer content */}
+      </footer>
+    </div>
+  );
 };
 
-export default function RootLayout({
-  children }) {
-  return (
-    <html lang="en">
-      <Head>
-      
-      </Head>
-      <body>{children}</body>
-    </html>
-  );
-}
+export default Layout;
