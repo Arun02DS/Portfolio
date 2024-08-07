@@ -85,7 +85,7 @@ export default function Home() {
                         Proficient in developing scalable cloud-based code and staying updated on industry
                         trends.<span>Skilled in Python, HTML,CSS,JS,SQL,NLP, and MLOps. Successfully completed projects in thyroid detection, text summarization, sign language detection, and more..</span></p>
                     <div className="call-to-actions">
-                        <a href="./resources/Resume.pdf" target="_blank" className="button black">
+                        <a href=".resources/Arun_Negi_resume.pdf" target="_blank" className="button black">
                             View Resume
                         </a>
                         <a href="mailto:arunpycodecmaster@gmail.com" target="_blank" className="button white">
@@ -287,7 +287,7 @@ export default function Home() {
                         experience and skills..</p>
                     <p>For a comprehensive overview, you can download my full resume as a PDF document using the link
                         below.</p>
-                    <a href="./resources/Resume.pdf" target="_blank" className="button black">Download Resume</a>
+                    <a href=".resources/Arun_Negi_resume.pdf" target="_blank" className="button black">Download Resume</a>
                 </div>
                 <div className="chat-box">
                     <div className="scroll-area">
