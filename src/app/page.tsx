@@ -81,22 +81,22 @@ export default function Home() {
                     <h1><small>Hi I&apos;m</small>
                         Arun Singh Negi
                     </h1>
-                    <p>Accomplished data science professional with expertise in real-time ML and DL problem-solving.
+                    <p> an early-career data scientist experienced in tackling real-time issues with machine learning and deep learning methods.
                         Proficient in developing scalable cloud-based code and staying updated on industry
                         trends.<span>Skilled in Python, HTML,CSS,JS,SQL,NLP, and MLOps. Successfully completed projects in thyroid detection, text summarization, sign language detection, and more..</span></p>
                     <div className="call-to-actions">
                         <a href="./resources/Resume.pdf" target="_blank" className="button black">
-                            Veiw Resume
+                            View Resume
                         </a>
                         <a href="mailto:arunpycodecmaster@gmail.com" target="_blank" className="button white">
                             Contact Me
                         </a>
                     </div>
                     <div className="social-links">
-                        <a href="https://github.com/Arun02DS">
+                        <a href="https://github.com/Arun02DS" target="_blank" >
                             <img src="./Images/github.png" alt="GitHub" width="48" />
                         </a>
-                        <a href="www.linkedin.com/in/arun-negimedev">
+                        <a href="https://linkedin.com/in/arunnegiai" target="_blank" >
                             <img src="./Images/linkedin.png" alt="LinkedIn" width="48" />
                         </a>
                     </div>
@@ -210,7 +210,7 @@ export default function Home() {
                     </figure>
                     <h3>Ineuron</h3>
                     <div>2023-2024</div>
-                    <p>I have completed end-to-end projects, from understanding problem statements to designing optimal architectures. I performed exploratory data analysis using Pandas, Matplotlib and Seaborn. </p><p>I applied various algorithms and pre-trained models to improve performance metrics.Documentation included high-level and low-level design with detailed workflows.</p>
+                    <p>I have completed end-to-end projects during my internship, from understanding problem statements to designing optimal architectures. I performed exploratory data analysis using Pandas, Matplotlib and Seaborn. </p><p>I applied various algorithms and pre-trained models to improve performance metrics.Documentation included high-level and low-level design with detailed workflows.</p>
                 </article>
                 
                 <article>
@@ -249,21 +249,27 @@ export default function Home() {
 
                 <a href="https://github.com/Arun02DS/chatbot_medical.git" target="_blank" className="bentoitem">
                     <img src="Images/chatbot.jfif" alt="Chatbot" width="100%" />
+                    <div className="caption">Explore the Medical Chatbot on GitHub</div>
                 </a>
                 <a href="https://github.com/Arun02DS/Text-summarization.git" target="_blank" className="bentoitem">
                     <img src="Images/text_summ.png" alt="Text-summ" width="100%" />
+                    <div className="caption">Explore the Text Summarization Project on GitHub</div>
                 </a>
                 <a href="https://github.com/Arun02DS/Langchain_generator.git" target="_blank" className="bentoitem">
                     <img src="Images/QandA.jfif" alt="Ouestion-Answer" width="100%" />
+                    <div className="caption">Explore the Question answer Chatbot on GitHub</div>
                 </a>
                 <a href="https://github.com/Arun02DS/Thyroid_detection.git" target="_blank" className="bentoitem">
                     <img src="Images/Thyroid_detect.jfif" alt="Thyroid" width="100%" />
+                    <div className="caption">Explore the Thyroid detection Project on GitHub</div>
                 </a>
                 <a href="https://github.com/Arun02DS/Sign_lang_AWS.git" target="_blank" className="bentoitem">
                     <img src="Images/sign_lang.jfif" alt="Sign-language" width="100%" />
+                    <div className="caption">Explore the Sign Language Detection project on GitHub</div>
                 </a>
                 <a href="https://github.com/Arun02DS/html_extractor.git" target="_blank" className="bentoitem">
                     <img src="Images/Html_ex.jfif" alt="" width="100%" />
+                    <div className="caption">Explore the Html Extractor Project on GitHub</div>
                 </a>
 
 

@@ -32,7 +32,6 @@ body {
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    font-size: 20px;
     background-color: var(--black-red);
 }
 
@@ -84,6 +83,8 @@ header {
     nav {
         display: flex;
         align-items: center;
+        margin-right: 20px;
+        margin-left: 20px;
         
         ul {
             display: flex;
@@ -604,6 +605,24 @@ h3 {
                     grid-column: span 5;
                     grid-row: span 2;
                 }
+            }
+            .caption {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+                color: white;
+                padding: 10px;
+                text-align: center;
+                visibility: hidden; /* Hide by default */
+                opacity: 0;
+                transition: opacity 0.3s ease; /* Smooth transition */
+            }
+
+            &:hover .caption {
+                visibility: visible;
+                opacity: 1;
             }
         }
     }
