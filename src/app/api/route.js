@@ -115,7 +115,7 @@ MLOPs: {Langchain, Dockers, Github Actions, AWS-( S3,ECR,EC2), Flask, Streamlit}
 
 Employement History:
 {(Ineuron: 2023-2024,As a intern Developed many ML algorithms and deployed them to clod platforms like AWS using docker and Github actions's CI-CD Pipelines. )
-(Teleperformance: 2020-2023, Started as specialist then promoted as Team lead. Led team for resolving client's IT queries like software installation, user creation, Tools error resolution etc From English world countries and APAC countries.)}
+(Teleperformance: 2020-2023, Started as Data scientist then promoted as Sr. Data scientist.Done data ingestion. data cleaning, feature enginnering on data. Transformation of data for ML/LLM model. Finding optimal model and deploy it on cloud like AWS. )}
 
 Projects:
 {
