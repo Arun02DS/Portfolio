@@ -222,7 +222,7 @@ export default function Home() {
                     </figure>
                     <h3>Teleperformance</h3>
                     <div>2022-2023</div>
-                    <p>As a Team Lead at Teleperformance, I managed a team, delivering resolution on clients queries. I resolved real-time client issues, handled high-level escalations in English and APAC regions.</p><p>My responsibilities included managing software installations through Jenkins, AD Manager, TP Console, and Azure AD. Additionally, I ensured adherence to company policies and maintained a positive, professional work environment.</p>
+                    <p>As a sr. Data Scientist at Teleperformance, I managed a team, delivering end to end machine learning projects.</p><p>My responsibilities included managing team, developing pipelines for ML, deep learning ,LLM or Gen AI applications, collaborating with different teams.</p>
                 </article>
                 <article>
                     <figure>
@@ -233,7 +233,7 @@ export default function Home() {
                     </figure>
                     <h3>Teleperformance</h3>
                     <div>2020-2022</div>
-                    <p>As a Technical Support Specialist at Teleperformance, I resolved IT issues for customers, including real-time support for Genesys dialer with SQL queries and Active Directory problems like user creation and authentication.</p><p> I used CMD to address remote software issues and conducted diagnostics. I also documented and maintained records of customer interactions and resolutions in the service desk ticketing tool.</p>
+                    <p>As Data scientist at Teleperformance, Worked on performing Explotary data analysis to data, Working on different components of ML pipeline.Experimenting different algorithms to get got metrics for the model.</p>
                 </article>
                 
             </div>
